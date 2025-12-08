@@ -1,0 +1,36 @@
+{
+	"compilerOptions": {
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"resolveJsonModule": true,
+		"strict": true,
+		"lib": ["ESNext"],
+		"target": "ESNext",
+        "module": "nodenext",
+		"moduleResolution": "NodeNext",
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noImplicitOverride": true,
+		"outDir": "./build",
+		"rootDir": ".",
+        "ignoreDeprecations": "6.0",
+		"baseUrl": "./src",
+		"paths": {
+		    "#server": ["./server.ts"],
+            "#whatsapp":["./whatsapp/index.ts"],
+            "#whatsapp/functions":["./whatsapp/functions/index.ts"],
+			"#whatsapp/client":["./whatsapp/client.ts"],
+            "#env": ["./env.ts"],
+			"#lib": ["./lib/index.ts"],
+			"#tools": ["./tools/index.ts"],
+			"#validation": ["./validation/index.ts"],
+			"#types/*": ["./@types/*"],
+			"#middlewares": ["./middlewares/index.ts"],
+			"#controllers": ["./controllers/index.ts"],
+		}
+	},
+    "include": ["src"],
+	"exclude": ["node_modules"]
+}

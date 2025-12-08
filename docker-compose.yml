@@ -1,0 +1,20 @@
+
+version: '3.7'
+
+services:
+  postgres:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=climate
+    volumes:
+      - 'polls_pg_data:/bitnami/postgresql'
+
+volumes:
+  polls_pg_data:
+    driver: local
+  polls_redis_data:
+    driver: local

@@ -1,0 +1,24 @@
+enum SubscriptionAlerts {
+  temp_high
+  temp_low
+  rain
+  wind
+  humidity
+  snow
+  cloud
+  uv
+}
+model Subscription {
+     id String @id @default(uuid())
+     
+     phone String @unique
+     city String
+     
+     active Boolean @default(true)
+     alerts SubscriptionAlerts[]
+     timePref    String?
+     createdAt DateTime @default(now())
+     updatedAt DateTime @updatedAt
+
+     @@map("subscriptions")
+}

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Alerta Clima — Inscrição</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="panel">
+      <header>
+        <h1>☁️ Alerta Clima | Receba avisos no WhatsApp</h1>
+        <p>Cadastre seu número, escolha a cidade e os tipos de alerta que quer receber.</p>
+      </header>
+
+      <form id="subscribeForm" autocomplete="off" novalidate>
+        <div class="row">
+          <div style="flex:1" class="col">
+            <label class="small">Número (WhatsApp)</label>
+            <input id="phone" class="input" placeholder="+55 11 9xxxx-xxxx" inputmode="tel" pattern="^\+?\d{10,15}$" required>
+            <small class="muted-note">Formato internacional recomendado (ex: +5511999887766). Será usado apenas para envio de notificações.</small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div style="flex:1" class="col city-search">
+            <label class="small">Cidade</label>
+            <input id="cityInput" class="input" placeholder="Procure por cidade (ex: São Paulo)" />
+            <div id="cityList" class="city-list" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px">
+          <label class="small">Tipos de alerta</label>
+          <div class="checkboxes" id="alerts">
+            <label class="chip"><input type="checkbox" value="temp_high"> Alta temperatura</label>
+            <label class="chip"><input type="checkbox" value="temp_low"> Baixa temperatura</label>
+            <label class="chip"><input type="checkbox" value="rain"> Chuva / Temporal</label>
+            <label class="chip"><input type="checkbox" value="wind"> Vento forte</label>
+            <label class="chip"><input type="checkbox" value="humidity"> Umidade crítica</label>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:14px;align-items:center">
+          <div style="flex:1">
+            <label class="small">Preferência de horário (opcional)</label>
+            <select id="timePref" class="input">
+              <option value="">Notificações imediatas</option>
+              <option value="06-12">Manhã (06:00–12:00)</option>
+              <option value="12-18">Tarde (12:00–18:00)</option>
+              <option value="18-23">Noite (18:00–23:00)</option>
+            </select>
+          </div>
+          <div style="width:140px">
+            <label class="small">&nbsp;</label>
+            <button type="button" id="previewBtn" class="ghost small-btn" style="width:100%">Ver preview</button>
+          </div>
+        </div>
+
+        <div class="cta">
+          <button class="primary" id="saveBtn" type="submit">Salvar inscrição</button>
+          <button type="button" id="clearBtn" class="ghost">Limpar</button>
+          <div style="flex:1"></div>
+        </div>
+
+        <div class="muted-note" style="margin-top:12px">
+          Observação: Este front-end coleta preferências; o envio real de mensagens via WhatsApp é feito pelo servidor.
+        </div>
+      </form>
+    </div>
+
+    <div class="panel preview">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-size:13px;color:var(--muted)">Inscrições ativas</div>
+            <div style="font-weight:700;font-size:18px" id="summaryTitle">Nenhuma inscrição</div>
+            <small id="summaryCity" class="muted-note"></small>
+          </div>
+          <div class="avatar" id="avatarTxt">AC</div>
+        </div>
+      </div>
+
+      <div class="card" id="prefsCard" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-weight:700" id="prefName">Seu número</div>
+            <small id="prefPhone" class="muted-note"></small>
+          </div>
+          <div style="text-align:right">
+            <div id="prefCity" style="font-weight:700"></div>
+            <small class="muted-note" id="prefTime"></small>
+          </div>
+        </div>
+
+        <hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:12px 0;border-radius:4px">
+
+        <div id="prefAlerts" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+
+        <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+          <div class="muted-note">Última atualização: <span id="lastSaved">—</span></div>
+          <div id="savedIndicator" style="display:flex;gap:8px;align-items:center"></div>
+        </div>
+      </div>
+
+      <div class="card" style="display:flex;gap:10px;align-items:center;justify-content:space-between">
+        <div>
+          <div style="font-weight:700">Como funciona</div>
+          <small class="muted-note">O front-end envia os dados ao backend. O backend usa uma API de clima para detectar eventos e envia mensagens via WhatsApp.</small>
+        </div>
+        <div style="text-align:right">
+          <button id="exportBtn" class="ghost small-btn">Exportar CSV</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
