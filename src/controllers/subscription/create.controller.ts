@@ -1,5 +1,5 @@
+import db from "#database";
 import { subscriptionCreateSchema } from "#validation";
-import db from "database/index.js";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { StatusCodes } from "http-status-codes";
 

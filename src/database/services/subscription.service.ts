@@ -20,6 +20,12 @@ class SubscriptionService {
         
         return subscription;
     };
+
+    public async getMany(args: Prisma.SubscriptionFindManyArgs): Promise<Subscription[]> { 
+        const subscriptions = await prisma.subscription.findMany(args);
+
+        return subscriptions;
+    }
     
 };
 

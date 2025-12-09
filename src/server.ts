@@ -1,4 +1,4 @@
-import { zodHandlerError } from "#lib";
+import { zodHandlerError } from "#functions";
 import { startWhatsClient } from "#whatsapp";
 import autoload from "@fastify/autoload";
 import cors from "@fastify/cors";

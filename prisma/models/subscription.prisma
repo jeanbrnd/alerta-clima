@@ -16,6 +16,8 @@ model Subscription {
      
      active Boolean @default(true)
      alerts SubscriptionAlerts[]
+     lastAlerts Json?
+     lastSentAt DateTime?
      timePref    String?
      createdAt DateTime @default(now())
      updatedAt DateTime @updatedAt

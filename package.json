@@ -8,7 +8,7 @@
     "name": "jean",
     "url": "https://github.com/jeanbrnd"
   },
-  "main": "build/index.js",
+  "main": "build/server.js",
   "scripts": {
     "check": "tsc --noEmit && echo ✔ Ok",
     "build": "tsup",
@@ -48,14 +48,17 @@
     "typescript": "5.7.2"
   },
   "imports": {
-    "#controllers": [
-      "./build/controllers/index.js"
-    ],
-    "#server": [
-      "./build/server.js"
-    ],
-    "#types/*": [
-      "./build/@types/*"
-    ]
+      "#server": ["./build/server.js"],
+       "#whatsapp":["./build/whatsapp/index.js"],
+       "#whatsapp/functions":["./build/whatsapp/functions/index.js"],
+			"#whatsapp/client":["./build/whatsapp/client.js"],
+       "#env": ["./build/env.js"],
+       "#database":["./build/database/index.js"],
+			"#functions": ["./build/functions/index.js"],
+			"#tools": ["./build/tools/index.js"],
+			"#validation": ["./build/validation/index.js"],
+			"#types/*": ["./build/@types/*"],
+			"#middlewares": ["./build/middlewares/index.js"],
+			"#controllers": ["./build/controllers/index.js"]
   }
 }
