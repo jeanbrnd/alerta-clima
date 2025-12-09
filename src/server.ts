@@ -1,5 +1,4 @@
 import { zodHandlerError } from "#functions";
-import { startWhatsClient } from "#whatsapp";
 import autoload from "@fastify/autoload";
 import cors from "@fastify/cors";
 import fastifyStatic from "@fastify/static";
@@ -71,8 +70,6 @@ export async function startServer(){
         process.exit(1);
     });
     
-     startWhatsClient();
-
     console.log(ck.green(`● ${ck.underline("Fastify")} server listening on port ${port}`));
 
     process.on("SIGINT", () => gracefulShutdown("SIGINT", app));
@@ -86,4 +83,3 @@ export function defineRoutes(handler: RouteHandler){
     }
 };
 
-startServer();

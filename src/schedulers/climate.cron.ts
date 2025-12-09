@@ -30,8 +30,8 @@ async function handlerSubscription(sub: Subscription, now: Date) {
 
 const pool = runInPool(3);
 
-export async function ClimateSchedelerStart() {
-   new CronJob('0 0 */1 * * *', async () => {
+export async function startClimateSchedeler(startImmediately?: boolean) {
+  const job = new CronJob('0 0 */1 * * *', async () => {
     //pegando horario do brasillll   
     const now = getDateBR(); 
      
@@ -42,6 +42,12 @@ export async function ClimateSchedelerStart() {
     await Promise.all(
        subs.map(sub => pool(() => handlerSubscription(sub, now)))
     );
-    
-  }, null, true, "America/Sao_Paulo").start();
+     
+  }, null, true, "America/Sao_Paulo");
+
+  if(startImmediately) {
+    job.fireOnTick();
+  };
+
+  job.start();
 };

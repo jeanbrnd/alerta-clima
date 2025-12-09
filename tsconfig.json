@@ -18,6 +18,7 @@
 		"baseUrl": "./src",
 		"paths": {
 		    "#server": ["./server.ts"],
+			"#schedulers":["./schedulers/index.ts"],
             "#whatsapp":["./whatsapp/index.ts"],
             "#whatsapp/functions":["./whatsapp/functions/index.ts"],
 			"#whatsapp/client":["./whatsapp/client.ts"],
